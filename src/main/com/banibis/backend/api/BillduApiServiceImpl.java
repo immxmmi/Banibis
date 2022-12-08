@@ -38,7 +38,6 @@ public class BillduApiServiceImpl implements BillduApiService {
     public AllDocuments loadAllDocument() {
         String url = config.getURL() + config.getParameterForDocuments() + "type=" + config.getParameterType() + "&apiKey=" + config.getApiKey() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
-        System.out.println(url);
         return new Gson().fromJson(data, AllDocuments.class);
     }
 
