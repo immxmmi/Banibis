@@ -1,5 +1,9 @@
 package main.com.banibis.backend.encrypt;
 
 public interface Signature {
-    void enctypt();
+    void createSignature();
+
+    void printParameter();
+
+    String getSignature();
 }

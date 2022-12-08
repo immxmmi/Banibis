@@ -1,6 +1,8 @@
 package main;
 
 import main.com.banibis.backend.api.BillduApiServiceImpl;
+import main.com.banibis.backend.encrypt.Signature;
+import main.com.banibis.backend.encrypt.SignatureImpl;
 import main.com.banibis.utilits.Printer;
 
 import java.util.Scanner;
@@ -57,6 +59,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        startMenu();
+
+        //startMenu();
+         Signature sign = new SignatureImpl();
+         sign.createSignature();
+         sign.printParameter();
+
     }
 }

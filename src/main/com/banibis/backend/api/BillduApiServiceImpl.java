@@ -4,6 +4,8 @@ package main.com.banibis.backend.api;
 import com.google.gson.Gson;
 import main.com.banibis.backend.config.ConfigurationManager;
 import main.com.banibis.backend.config.ConfigurationManagerImpl;
+import main.com.banibis.backend.encrypt.Signature;
+import main.com.banibis.backend.encrypt.SignatureImpl;
 import main.com.banibis.backend.net.NetworkCommunicationService;
 import main.com.banibis.backend.net.NetworkCommunicationServiceImpl;
 import main.com.banibis.models.AllClient;
@@ -18,17 +20,21 @@ public class BillduApiServiceImpl implements BillduApiService {
     // Network
     private NetworkCommunicationService net = new NetworkCommunicationServiceImpl();
 
+    private Signature signature = new SignatureImpl();
+
     // Clients
     @Override
     public AllClient loadAllClients() {
-        String url = config.getURL() + config.getParameterForClients() + "apiKey=" + config.getApiKey() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
+        signature.createSignature();
+        String url = config.getURL() + config.getParameterForClients() + "apiKey=" + config.getApiKey() + "&signature=" + signature.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
         return new Gson().fromJson(data, AllClient.class);
     }
 
     @Override
     public Client loadClient() {
-        String url = config.getURL() + config.getParameterClient() + "apiKey=" + config.getApiKey() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
+        signature.createSignature();
+        String url = config.getURL() + config.getParameterClient() + "apiKey=" + config.getApiKey() + "&signature=" + signature.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
         return new Gson().fromJson(data, Client.class);
     }
@@ -36,14 +42,16 @@ public class BillduApiServiceImpl implements BillduApiService {
     // Documents
     @Override
     public AllDocuments loadAllDocument() {
-        String url = config.getURL() + config.getParameterForDocuments() + "type=" + config.getParameterType() + "&apiKey=" + config.getApiKey() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
+        signature.createSignature();
+        String url = config.getURL() + config.getParameterForDocuments() + "type=" + config.getParameterType() + "&apiKey=" + signature.getSignature() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
         return new Gson().fromJson(data, AllDocuments.class);
     }
 
     @Override
     public Document loadDocument() {
-        String url = config.getURL() + config.getParameterDocument() + "apiKey=" + config.getApiKey() + "&signature=" + config.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
+        signature.createSignature();
+        String url = config.getURL() + config.getParameterDocument() + "apiKey=" + config.getApiKey() + "&signature=" + signature.getSignature() + "&amp;timestamp=" + config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
         return new Gson().fromJson(data, Document.class);
     }

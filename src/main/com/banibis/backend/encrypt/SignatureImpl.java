@@ -1,7 +1,8 @@
 package main.com.banibis.backend.encrypt;
 
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import main.com.banibis.backend.config.ConfigurationManager;
 import main.com.banibis.backend.config.ConfigurationManagerImpl;
 import org.json.simple.JSONObject;
@@ -15,7 +16,8 @@ import java.time.Instant;
 import java.util.Base64;
 
 
-@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SignatureImpl implements Signature {
     private ConfigurationManager conf = new ConfigurationManagerImpl();
     private static final String DEFAULT_ENCODING = "UTF-8";
@@ -26,7 +28,7 @@ public class SignatureImpl implements Signature {
     private String signature;
 
     @Override
-    public void enctypt() {
+    public void createSignature() {
         timestamp = Instant.now().getEpochSecond();
         JSONObject data = new JSONObject();
         data.put("apiKey", apiKey);
@@ -34,6 +36,15 @@ public class SignatureImpl implements Signature {
         byte[] hmacSha512 = hmacSha512(data, apiSecret);
         signature  = Base64.getEncoder().encodeToString(hmacSha512);
         signature  = URLEncoder.encode(signature);
+    }
+    @Override
+    public void printParameter(){
+        System.out.println("Time Stamp:");
+        System.out.println(timestamp);
+        System.out.println("Api Key:");
+        System.out.println(apiKey);
+        System.out.println("Signature:");
+        System.out.println(signature);
     }
     private static byte[] hmacSha512(JSONObject value, String key){
         try {
@@ -54,4 +65,8 @@ public class SignatureImpl implements Signature {
         }
     }
 
+    @Override
+    public String getSignature() {
+        return signature;
+    }
 }
