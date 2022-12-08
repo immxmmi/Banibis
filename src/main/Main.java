@@ -1,7 +1,7 @@
 package main;
 
 import main.com.banibis.backend.api.BillduApiServiceImpl;
-import main.com.banibis.models.Printer;
+import main.com.banibis.utilits.Printer;
 
 import java.util.Scanner;
 

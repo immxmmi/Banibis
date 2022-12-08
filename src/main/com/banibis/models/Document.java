@@ -2,6 +2,7 @@ package main.com.banibis.models;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import main.com.banibis.utilits.Printer;
 
 import java.util.ArrayList;
 import java.util.Date;
