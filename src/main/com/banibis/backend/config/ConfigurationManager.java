@@ -19,4 +19,6 @@ public interface ConfigurationManager {
     String getParameterForDocuments();
 
     String getParameterType();
+
+    String getApiSecret();
 }

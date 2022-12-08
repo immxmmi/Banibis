@@ -67,4 +67,8 @@ public class ConfigurationManagerImpl implements ConfigurationManager {
     public String getParameterType() {
         return getConfigPropertyValue("type");
     }
+    @Override
+    public String getApiSecret() {
+        return getConfigPropertyValue("apiSecret");
+    }
 }
