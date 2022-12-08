@@ -2,13 +2,15 @@ package main.com.banibis.models;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Links{
+@Builder(toBuilder = true)
+public class Links {
     @SerializedName("self")
     public Href self;
     @SerializedName("first")

@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Logo{
+public class Logo {
     @SerializedName("_links")
     public Links links;
     @SerializedName("href")
-    public Href href;
+    public String href;
 }

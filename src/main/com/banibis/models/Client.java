@@ -1,18 +1,16 @@
-package main.com.banibis.models.client;
+package main.com.banibis.models;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.com.banibis.models.Document;
-import main.com.banibis.models.Invoice;
-import main.com.banibis.models.Links;
+import main.com.banibis.models.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class Client extends Human {
+public class Client extends AbstractHuman implements Printer {
     @SerializedName("degree")
     protected String degree;
     @SerializedName("salutation")
@@ -37,4 +35,10 @@ public class Client extends Human {
     protected ArrayList<Document> documents;
     @SerializedName("_links")
     protected Links links;
+
+    @Override
+    public void printClass() {
+        System.out.println(this);
+    }
+
 }

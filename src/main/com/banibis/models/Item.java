@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class Item extends Document {
     @SerializedName("custom_id")
     public String customId;
+
 }

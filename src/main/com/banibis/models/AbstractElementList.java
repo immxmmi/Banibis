@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public abstract class AbstractElementList implements Printer{
+public abstract class AbstractElementList {
     @SerializedName("page")
     public int page;
     @SerializedName("limit")
@@ -15,4 +15,5 @@ public abstract class AbstractElementList implements Printer{
     public int total;
     @SerializedName("_links")
     public Links links;
+
 }

@@ -34,18 +34,37 @@ public class ConfigurationManagerImpl implements ConfigurationManager {
     }
 
     @Override
-    public String getTimeStamp() {return getConfigPropertyValue("timestamp");}
+    public String getTimeStamp() {
+        return getConfigPropertyValue("timestamp");
+    }
 
     @Override
-    public String getURL() {return getConfigPropertyValue("link");}
+    public String getURL() {
+        return getConfigPropertyValue("link");
+    }
+
     @Override
-    public String getParameterForClients() {return getConfigPropertyValue("allClients");}
+    public String getParameterForClients() {
+        return getConfigPropertyValue("allClients");
+    }
+
     @Override
-    public String getParameterClient() {return getConfigPropertyValue("client");}
+    public String getParameterClient() {
+        return getConfigPropertyValue("client");
+    }
+
     @Override
-    public String getParameterDocument() {return getConfigPropertyValue("document");}
+    public String getParameterDocument() {
+        return getConfigPropertyValue("document");
+    }
+
     @Override
-    public String getParameterForDocuments() {return getConfigPropertyValue("allDocuments");}
+    public String getParameterForDocuments() {
+        return getConfigPropertyValue("allDocuments");
+    }
+
     @Override
-    public String getParameterType() {return getConfigPropertyValue("type");}
+    public String getParameterType() {
+        return getConfigPropertyValue("type");
+    }
 }

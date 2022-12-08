@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.com.banibis.models.client.Client;
 
 @Data
 @NoArgsConstructor
@@ -14,10 +13,10 @@ import main.com.banibis.models.client.Client;
 public class AllClient extends AbstractElementList implements Printer {
     @SerializedName("_embedded")
     public Embedded<Client> embedded;
-
     @Override
     public void printClass() {
-        System.out.println(this.embedded.getItems().get(0));
-        System.out.println("allClient");
+        embedded.getItems().forEach((client) -> client.printClass());
     }
+
+
 }

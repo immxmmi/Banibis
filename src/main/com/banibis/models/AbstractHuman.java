@@ -1,11 +1,11 @@
-package main.com.banibis.models.client;
+package main.com.banibis.models;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.Date;
 @Data
-public abstract class Human {
+public abstract class AbstractHuman {
     @SerializedName("id")
     protected int id;
     @SerializedName("country")
@@ -36,4 +36,5 @@ public abstract class Human {
     protected String vatId;
     @SerializedName("modified")
     protected Date modified;
+
 }

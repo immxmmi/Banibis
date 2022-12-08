@@ -7,11 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class Embedded<T>{
+public class Embedded<T> {
     @SerializedName("items")
     public ArrayList<T> items;
+
 }

@@ -1,59 +1,97 @@
 package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import main.com.banibis.models.client.ShippingClient;
-import main.com.banibis.models.client.Supplier;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 @Data
-public class Document {
+public class Document implements Printer {
+    @SerializedName("id")
     protected int id;
+    @SerializedName("currency")
     protected String currency;
+    @SerializedName("vs")
     protected String vs;
+    @SerializedName("cs")
     protected String cs;
+    @SerializedName("ss")
     protected String ss;
+    @SerializedName("status")
     protected String status;
+    @SerializedName("payment")
     protected String payment;
-    protected Object delivery_type;
+    // Objekt ? ENUM ?
+    @SerializedName("delivery_type")
+    protected Object deliveryType;
+    @SerializedName("note")
     protected String note;
-    protected String order_number;
-    protected String delivery_note;
+    @SerializedName("order_number")
+    protected String orderNumber;
+    @SerializedName("delivery_note")
+    protected String deliveryNote;
+    @SerializedName("discount")
     protected int discount;
-    protected int sconto_days;
+    @SerializedName("sconto_days")
+    protected int scontoDays;
+    @SerializedName("created")
     protected Date created;
+    @SerializedName("modified")
     protected Date modified;
-    protected Date issue_date;
-    protected Date delivery_date;
-
+    @SerializedName("issue_date")
+    protected Date issueDate;
+    @SerializedName("delivery_date")
+    protected Date deliveryDate;
     // DATE ? or Number
-    protected Object execution_date;
-    protected int maturity_date;
-    protected int total_price;
+    @SerializedName("execution_date")
+    protected Object executionDate;
+    @SerializedName("maturity_date")
+    protected int maturityDate;
+    @SerializedName("total_price")
+    protected int totalPrice;
+    @SerializedName("price")
     protected int price;
+    @SerializedName("tax")
     protected int tax;
-    protected String serial_number;
+    @SerializedName("serial_number")
+    protected String serialNumber;
+    @SerializedName("shippingClient")
     protected ShippingClient shippingClient;
+    @SerializedName("supplier")
     protected Supplier supplier;
-
-    // ?
+    // List of OBJEKT "Payment" ?
+    @SerializedName("payments")
     protected ArrayList<Object> payments;
+    @SerializedName("author")
     protected String author;
+    @SerializedName("logo")
     protected Logo logo;
+    @SerializedName("signature")
     protected Href signature;
-
-    // ?
-    protected Object credit_doc;
+    // OBJEKT ? STRING
+    @SerializedName("credit_doc")
+    protected Object creditDoc;
+    @SerializedName("header")
     protected String header;
+    @SerializedName("locale")
     protected String locale;
-    protected String document_color;
-
+    @SerializedName("document_color")
+    protected String documentColor;
     // DATE ??
-    protected Object paid_on;
-    protected String income_cash_voucher;
-    protected Links _links;
+    @SerializedName("paid_on")
+    protected Object paidOn;
+    @SerializedName("income_cash_voucher")
+    protected String incomeCashVoucher;
+    @SerializedName("_links")
+    protected Links links;
+    @SerializedName("pdf")
+    private Href pdf;
 
-    // Only in Document
-    private Object pdf;
+    @Override
+    public void printClass() {
+        System.out.println(this);
+    }
+
+
 }
