@@ -1,5 +1,6 @@
 package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +12,6 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class Embedded<T>{
+    @SerializedName("items")
     public ArrayList<T> items;
 }

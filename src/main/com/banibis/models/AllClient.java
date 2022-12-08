@@ -1,5 +1,6 @@
 package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,13 @@ import main.com.banibis.models.client.Client;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class AllClient extends AbstractElement{
-    public Embedded<Client> _embedded;
+public class AllClient extends AbstractElementList implements Printer {
+    @SerializedName("_embedded")
+    public Embedded<Client> embedded;
+
+    @Override
+    public void printClass() {
+        System.out.println(this.embedded.getItems().get(0));
+        System.out.println("allClient");
+    }
 }

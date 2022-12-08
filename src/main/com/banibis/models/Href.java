@@ -1,5 +1,6 @@
-package main.com.banibis.models.href;
+package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class First{
+public class Href {
+    @SerializedName("href")
     public String href;
 }

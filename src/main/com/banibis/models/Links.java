@@ -1,20 +1,24 @@
 package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.com.banibis.models.href.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder = true)
 public class Links{
-    public Self self;
-    public First first;
-    public Last last;
-    public Pdf pdf;
+    @SerializedName("self")
+    public Href self;
+    @SerializedName("first")
+    public Href first;
+    @SerializedName("last")
+    public Href last;
+    @SerializedName("pdf")
+    public Href pdf;
+    @SerializedName("signature")
+    public Href signature;
+    @SerializedName("logo")
     public Logo logo;
-    public Signature signature;
 }

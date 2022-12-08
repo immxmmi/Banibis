@@ -1,9 +1,9 @@
 package main.com.banibis.backend.api;
 
-import main.com.banibis.model.Client;
-import main.com.banibis.model.Document;
 import main.com.banibis.models.AllClient;
 import main.com.banibis.models.AllDocuments;
+import main.com.banibis.models.Document;
+import main.com.banibis.models.client.Client;
 
 public interface BillduApiService {
 

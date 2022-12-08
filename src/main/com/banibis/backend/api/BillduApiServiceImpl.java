@@ -2,14 +2,18 @@ package main.com.banibis.backend.api;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import main.com.banibis.backend.config.ConfigurationManager;
 import main.com.banibis.backend.config.ConfigurationManagerImpl;
 import main.com.banibis.backend.net.NetworkCommunicationService;
 import main.com.banibis.backend.net.NetworkCommunicationServiceImpl;
-import main.com.banibis.model.Client;
-import main.com.banibis.model.Document;
 import main.com.banibis.models.AllClient;
 import main.com.banibis.models.AllDocuments;
+import main.com.banibis.models.Document;
+import main.com.banibis.models.client.Client;
+import main.com.banibis.models.client.Human;
+import main.gson.RuntimeTypeAdapterFactory;
+
 
 public class BillduApiServiceImpl implements BillduApiService {
     // Config File
@@ -18,12 +22,17 @@ public class BillduApiServiceImpl implements BillduApiService {
     private NetworkCommunicationService net = new NetworkCommunicationServiceImpl();
 
 
-    // start
     @Override
     public Client loadClient(){
         String url = config.getURL()+config.getParameterClient()+"apiKey="+config.getApiKey()+"&signature="+config.getSignature()+"&amp;timestamp="+config.getTimeStamp();
         String data = net.getResponseBodyByURL(url);
-        return new Gson().fromJson(data, Client.class);
+
+        RuntimeTypeAdapterFactory<Human> humanAdapterFactory = RuntimeTypeAdapterFactory.of(Human.class, "type").registerSubtype(Client.class, Client.class.getName());
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(humanAdapterFactory)
+                .create();
+        return gson.fromJson(data, Client.class);
     }
 
     @Override

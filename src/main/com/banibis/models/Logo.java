@@ -1,5 +1,6 @@
 package main.com.banibis.models;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Logo{
-    public Links _links;
-    public String href;
+    @SerializedName("_links")
+    public Links links;
+    @SerializedName("href")
+    public Href href;
 }

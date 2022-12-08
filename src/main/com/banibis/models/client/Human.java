@@ -1,23 +1,39 @@
 package main.com.banibis.models.client;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.Date;
 @Data
-public class Human {
+public abstract class Human {
+    @SerializedName("id")
     protected int id;
+    @SerializedName("country")
     protected String country;
+    @SerializedName("company")
     protected String company;
+    @SerializedName("fullname")
     protected String fullname;
+    @SerializedName("street")
     protected String street;
+    @SerializedName("zip")
     protected String zip;
+    @SerializedName("city")
     protected String city;
+    @SerializedName("phone")
     protected String phone;
+    @SerializedName("mobile")
     protected String mobile;
+    @SerializedName("fax")
     protected String fax;
+    @SerializedName("web")
     protected String web;
+    @SerializedName("email")
     protected String email;
-    protected String tax_id;
-    protected String vat_id;
+    @SerializedName("tax_id")
+    protected String taxId;
+    @SerializedName("vat_id")
+    protected String vatId;
+    @SerializedName("modified")
     protected Date modified;
 }

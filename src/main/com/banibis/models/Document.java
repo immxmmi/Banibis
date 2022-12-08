@@ -1,8 +1,8 @@
 package main.com.banibis.models;
 
 import lombok.Data;
-import main.com.banibis.models.client.Shipping;
-import main.com.banibis.models.href.Signature;
+import main.com.banibis.models.client.ShippingClient;
+import main.com.banibis.models.client.Supplier;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,14 +34,14 @@ public class Document {
     protected int price;
     protected int tax;
     protected String serial_number;
-    protected Shipping shipping;
+    protected ShippingClient shippingClient;
     protected Supplier supplier;
 
     // ?
     protected ArrayList<Object> payments;
     protected String author;
     protected Logo logo;
-    protected Signature signature;
+    protected Href signature;
 
     // ?
     protected Object credit_doc;
