@@ -1,0 +1,163 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AbstractElementList {
+  + page: int
+  + pages: int
+  + limit: int
+  + total: int
+  + links: Links
+}
+class AbstractHuman {
+  # street: String
+  # email: String
+  # company: String
+  # city: String
+  # fullname: String
+  # id: int
+  # vatId: String
+  # country: String
+  # taxId: String
+  # modified: Date
+  # mobile: String
+  # zip: String
+  # phone: String
+  # web: String
+  # fax: String
+}
+class AllClient {
+  + embedded: Embedded<Client>
+}
+class AllDocuments {
+  + embedded: Embedded<ShippingClient>
+}
+interface BillduApiService << interface >>
+class BillduApiServiceImpl {
+  - config: ConfigurationManager
+  - net: NetworkCommunicationService
+}
+class Client {
+  # surname: String
+  # created: Date
+  # salutation: String
+  # name: String
+  # comId: String
+  # documents: ArrayList<Document>
+  # invoices: ArrayList<Invoice>
+  # links: Links
+  # degree: String
+  # note: String
+  # bankAccount: String
+  # expenses: ArrayList<Object>
+}
+interface ConfigurationManager << interface >>
+class ConfigurationManagerImpl
+class Document {
+  # supplier: Supplier
+  # id: int
+  # orderNumber: String
+  # deliveryDate: Date
+  # discount: int
+  # status: String
+  # scontoDays: int
+  # signature: Href
+  # vs: String
+  # ss: String
+  # creditDoc: Object
+  # price: int
+  # modified: Date
+  # logo: Logo
+  # documentColor: String
+  # deliveryType: Object
+  # paidOn: Object
+  # header: String
+  # author: String
+  # payments: ArrayList<Object>
+  # shippingClient: ShippingClient
+  # cs: String
+  # maturityDate: int
+  # currency: String
+  # payment: String
+  # executionDate: Object
+  # incomeCashVoucher: String
+  # links: Links
+  # totalPrice: int
+  # note: String
+  # deliveryNote: String
+  # locale: String
+  # issueDate: Date
+  # serialNumber: String
+  - pdf: Href
+  # created: Date
+  # tax: int
+}
+class Embedded<T> {
+  + items: ArrayList<T>
+}
+class Href {
+  + href: String
+}
+class Invoice {
+  + links: Links
+}
+class Item {
+  + customId: String
+}
+class Links {
+  + pdf: Href
+  + self: Href
+  + first: Href
+  + signature: Href
+  + last: Href
+  + logo: Logo
+}
+class Logo {
+  + links: Links
+  + href: String
+}
+class Main
+interface NetworkCommunicationService << interface >>
+class NetworkCommunicationServiceImpl
+interface Printer << interface >>
+class ShippingClient {
+  - shippingZip: String
+  - province: String
+  - ratings: String
+  - street2: String
+  - shippingProvince: String
+  - shippingCompany: String
+  - shippingName: String
+  - shippingFullname: String
+  - shippingCountry: String
+  - shippingSurname: String
+  - shippingCity: String
+  - shippingStreet: String
+  - shippingStreet2: String
+}
+class Supplier {
+  - registered: String
+  - businessId: String
+  - logo: Logo
+  - street2: String
+  - vatPayer: int
+  - paypalEmail: String
+  - province: String
+}
+
+AllClient                        -[#000082,plain]-^  AbstractElementList             
+AllClient                        -[#008200,dashed]-^  Printer                         
+AllDocuments                     -[#000082,plain]-^  AbstractElementList             
+AllDocuments                     -[#008200,dashed]-^  Printer                         
+BillduApiServiceImpl             -[#008200,dashed]-^  BillduApiService                
+Client                           -[#000082,plain]-^  AbstractHuman                   
+Client                           -[#008200,dashed]-^  Printer                         
+ConfigurationManagerImpl         -[#008200,dashed]-^  ConfigurationManager            
+Document                         -[#008200,dashed]-^  Printer                         
+Item                             -[#000082,plain]-^  Document                        
+NetworkCommunicationServiceImpl  -[#008200,dashed]-^  NetworkCommunicationService     
+ShippingClient                   -[#000082,plain]-^  Client                          
+Supplier                         -[#000082,plain]-^  AbstractHuman                   
+@enduml
